@@ -13,7 +13,7 @@ shell i=/w1&
 shell i=/w2&
 shell i=/w3&
 shell i=/w4&
-Echo Loading 49 fonts plus graphics pointers & patterns...
+Echo Loading 49 fonts plus graphics pointers plus patterns...
 cd sys
 merge stdfonts stdpats_2 stdpats_16 stdpats_4 stdptrs stdwnd isolatin1font ibmedcfont smallfont.27 macfonts ansifonts_65.fnt ia.fnt roguefonts
 merge ibmpoker.fnt ibmcga.fnt

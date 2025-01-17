@@ -6,12 +6,12 @@ WHICHSHELL	= shellplus
 #WHICHSHELL	= shell_21
 
 DISTRO		= $(CPU)L$(LEVEL)
-DISTRONAME	= NOS9_$(CPU)_L$(LEVEL)
+DISTRONAME	= NOS9_$(DISTRO)
 DISTROVER	= $(DISTRONAME)_$(NITROS9VER)_$(PORT)
+DISTRODSK	= $(DISTRONAME)_realcocofpga
 BOOTFILE_REALCOCOFPGA = bootfiles/bootfile_realcocofpga
 KERNELFILE_REALCOCOFPGA = bootfiles/kernel_realcocofpga
-DIRS		= defs cmds modules sys bootfiles wwwroot
-
+DIRS		= defs cmds modules sys bootfiles #wwwroot
 
 
 CMDS		= $(shell $(CD) cmds; make --no-print-directory showobjs)
@@ -35,9 +35,31 @@ SYSGO		= sysgo_dd
 SYSGOBD		= sysgo_bd
 CCBKRN		= ccbkrn
 
-VHD_REALCOCOFPGA = $(DISTROVER)_allboards.vhd
+# Make sure is defined before the DSKS list!
+VHD_REALCOCOFPGA_ALLBOARDS = $(DISTRODSK)_allboards.vhd
 
-DSKS		=  $(VHD_REALCOCOFPGA)
+DSKS		=  $(VHD_REALCOCOFPGA_ALLBOARDS)
+
+$(VHD_REALCOCOFPGA_ALLBOARDS):
+	$(RM) $@
+	$(OS9FORMAT) -t29126 -ss -dd $@ -n"NitrOS-9/$(CPU) Level $(LEVEL)"
+	$(OS9GEN) $@ -b=$(BOOTFILE_REALCOCOFPGA) -t=$(KERNELFILE_REALCOCOFPGA)
+	$(MAKDIR) $@,CMDS
+	$(MAKDIR) $@,SYS
+	$(MAKDIR) $@,DEFS
+	$(OS9COPY) modules/$(SYSGO) $@,sysgo
+	$(OS9ATTR_EXEC) $@,sysgo
+	$(CD) cmds; $(OS9COPY) $(CMDS) ../$@,CMDS
+	$(CD) cmds; $(OS9COPY) -r shellplus ../$@,CMDS/shell
+	$(OS9ATTR_EXEC) $(foreach file,$(CMDS),$@,CMDS/$(file))
+	$(CD) sys; $(OS9COPY) $(SYSBIN) ../$@,SYS
+	$(OS9ATTR_TEXT) $(foreach file,$(SYSBIN),$@,SYS/$(file))
+	$(CD) sys; $(CPL) $(SYSTEXT) ../$@,SYS
+	$(OS9ATTR_TEXT) $(foreach file,$(SYSTEXT),$@,SYS/$(file))
+	$(CD) defs; $(CPL) $(DEFS) ../$@,DEFS
+	$(OS9ATTR_TEXT) $(foreach file,$(DEFS),$@,DEFS/$(file))
+	$(CPL) $(STARTUP) $@,startup
+	$(OS9ATTR_TEXT) $@,startup
 
 # Make all components
 all:
@@ -61,27 +83,6 @@ dsk: all $(DSKS)
 dskcopy: $(DSKS)
 	$(CP) $(DSKS) $(DSKDIR)
 
-
-$(VHD_REALCOCOFPGA):
-	$(RM) $@
-	$(OS9FORMAT) -t29126 -ss -dd $@ -n"NitrOS-9/$(CPU) Level $(LEVEL)"
-	$(OS9GEN) $@ -b=$(BOOTFILE_REALCOCOFPGA) -t=$(KERNELFILE_REALCOCOFPGA)
-	$(MAKDIR) $@,CMDS
-	$(MAKDIR) $@,SYS
-	$(MAKDIR) $@,DEFS
-	$(OS9COPY) modules/$(SYSGO) $@,sysgo
-	$(OS9ATTR_EXEC) $@,sysgo
-	$(CD) cmds; $(OS9COPY) $(CMDS) ../$@,CMDS
-	$(CD) cmds; $(OS9COPY) -r shellplus ../$@,CMDS/shell
-	$(OS9ATTR_EXEC) $(foreach file,$(CMDS),$@,CMDS/$(file))
-	$(CD) sys; $(OS9COPY) $(SYSBIN) ../$@,SYS
-	$(OS9ATTR_TEXT) $(foreach file,$(SYSBIN),$@,SYS/$(file))
-	$(CD) sys; $(CPL) $(SYSTEXT) ../$@,SYS
-	$(OS9ATTR_TEXT) $(foreach file,$(SYSTEXT),$@,SYS/$(file))
-	$(CD) defs; $(CPL) $(DEFS) ../$@,DEFS
-	$(OS9ATTR_TEXT) $(foreach file,$(DEFS),$@,DEFS/$(file))
-	$(CPL) $(STARTUP) $@,startup
-	$(OS9ATTR_TEXT) $@,startup
 
 info:
 	@$(ECHO) "*** NitrOS-9/$(CPU) Level $(LEVEL) for the $(MACHINE) ***"
