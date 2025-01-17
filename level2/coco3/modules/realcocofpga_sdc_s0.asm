@@ -1,7 +1,3 @@
-*********************************************************************
-* MATCHBOX COCO SDC DRIVER FOR OS-9
-* Lab-Only version last updated on 1-15-2025
-*********************************************************************
          nam   S0
          ttl	Virtual Disk Device Descriptor for MatchboxSDC
 

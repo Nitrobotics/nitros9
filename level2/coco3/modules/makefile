@@ -97,6 +97,23 @@ ccbkrn krn krnp2:
 
 # Special cases
 
+
+boot_realcocofpga: boot_realcocofpga_sdc.asm
+	$(AS) $(ASOUT)$@ $< $(AFLAGS)
+realcocofpga_sdc.dr: realcocofpga_sdc.asm
+	$(AS) $(ASOUT)$@ $< $(AFLAGS)
+realcocofpga_sdc_dds0.dr: realcocofpga_sdc_dds0.asm
+	$(AS) $(ASOUT)$@ $< $(AFLAGS)
+realcocofpga_sdc_s0.dr: realcocofpga_sdc_s0.asm
+	$(AS) $(ASOUT)$@ $< $(AFLAGS)
+realcocofpga_sdc_s1.dr: realcocofpga_sdc_s1.asm
+	$(AS) $(ASOUT)$@ $< $(AFLAGS)
+realcocofpga_sdc_s2.dr: realcocofpga_sdc_s2.asm
+	$(AS) $(ASOUT)$@ $< $(AFLAGS)
+realcocofpga_sdc_s3.dr: realcocofpga_sdc_s3.asm
+	$(AS) $(ASOUT)$@ $< $(AFLAGS)
+
+
 # TC^3 SCSI Booter
 boot_tc3: boot_scsi.asm
 	$(AS) $(ASOUT)$@ $< $(TC3FLAGS)

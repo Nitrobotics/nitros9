@@ -1,14 +1,9 @@
-*********************************************************************
-* MATCHBOX COCO SDC DRIVER FOR OS-9
-* Lab-Only version last updated on 1-15-2025
-*********************************************************************
-         nam   S2
+         nam   S1
          ttl	Virtual Disk Device Descriptor for MatchboxSDC
 
         use       os9.d
         use       rbf.d
         use       coco.d
-
 
 Type     set   Devic+Objct
 Revs     set   Reent+3   
@@ -19,7 +14,7 @@ Step12   equ   2
 Step06   equ   3         
 
 * USER CHANGEABLE SETTINGS
-Drive	set	2	OS-9 drive number (0-3)
+Drive	set	1	OS-9 drive number (0-3)
 DrvTyp	set   $84	hard drive + entire partition
 StpRat	set   Step30	drive stepping rate code
 Cyls	set   $1AAA	number of cylinders (tracks per side)
@@ -56,7 +51,7 @@ Verify	set   1		verify off
 OptEnd   equ   *
 
 * NAME STRINGS
-DescName fcs   "S2"
+DescName fcs   "S1"
 DscMgr   fcs   "RBF"
 DscDrv   fcs   "MatchboxSDC"
 
