@@ -55,7 +55,8 @@ RBF		= rbf.mn \
 		ddsd0_cocosdc.dd sd0_cocosdc.dd sd1_cocosdc.dd \
 		llcoco3fpga.dr ddsd0_coco3fpga.dd sd0_coco3fpga.dd sd1_coco3fpga.dd \
 		ramd_coco3fpga.dr r0_ramd_coco3fpga.dd \
-		emudsk.dr ddh0_emudsk.dd h0_emudsk.dd h1_emudsk.dd
+		emudsk.dr ddh0_emudsk.dd h0_emudsk.dd h1_emudsk.dd \
+		realcocofpga_sdc.dr realcocofpga_sdc_dds0.dd realcocofpga_sdc_s0.dd realcocofpga_sdc_s1.dd realcocofpga_sdc_s2.dd realcocofpga_sdc_s3.dd
 
 SCF		= scf.mn \
 		vtio.dr vrn.dr scbbp.dr scbbt.dr scdwp.dr sspak.dr sc6551.dr \
