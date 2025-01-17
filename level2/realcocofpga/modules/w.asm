@@ -27,9 +27,9 @@ szy                 set       0                   number for rows for display
 sty                 set       0                   window type
 cpx                 set       0                   x cursor position
 cpy                 set       0                   y cursor position
-prn1                set       0                   foreground color
-prn2                set       0                   background color
-prn3                set       0                   border color
+prn1                set       White.                   foreground color
+prn2                set       1                   background color
+prn3                set       1                   border color
 
                     mod       eom,name,tylg,atrv,mgrnam,drvnam
 
