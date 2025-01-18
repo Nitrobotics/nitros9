@@ -24,7 +24,7 @@ rev                 set       $00
 * Window descriptor definitions
 * Window descriptor definitions
 szx                 set       80                  number of columns for display
-szy                 set       28                  number for rows for display
+szy                 set       30                  number for rows for display
 sty                 set       2                   window type
 cpx                 set       0                   x cursor position
 cpy                 set       0                   y cursor position
