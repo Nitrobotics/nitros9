@@ -26,12 +26,11 @@ VTIO_COWIN_80 = $(MD)/vtio.dr \
 PIPE       = $(MD)/pipeman.mn $(MD)/piper.dr $(MD)/pipe.dd
 CLOCK60HZ  = $(MD)/clock_60hz $(MD)/clock2_soft
 
-BOOTFILE_REALCOCOFPGA	= $(MD)/krnp2 $(MD)/ioman $(MD)/init \
+BOOTFILE_REALCOCOFPGA	= $(MD)/krnp2 $(MD)/KrnP3_perr $(MD)/KrnP4_regdump $(MD)/ioman $(MD)/init \
 		$(MD)/rbf.mn \
         $(REALCOCOFPGA_SDC_DRIVERS) \
 		$(MD)/scf.mn \
 		$(VTIO_COWIN_80) \
-		$(MD)/myram.dr $(MD)/mr0.dd \
 		$(PIPE) \
 		$(CLOCK60HZ)
 

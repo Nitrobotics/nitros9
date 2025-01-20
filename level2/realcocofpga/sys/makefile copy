@@ -36,7 +36,7 @@ HELPFILES	+= dmem.hp basic09.hp runb.hp \
 
 HELPMSG		= helpmsg
 
-all:	$(BINFILES) $(DEPENDS)
+all:	$(TXTFILES) $(BINFILES) $(DEPENDS)
 
 $(HELPMSG): $(HELPFILES)
 	$(MERGE) $^ > $@
