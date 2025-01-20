@@ -33,7 +33,7 @@ HELPMSG		= helpmsg
 
 TEXTFILES	= $(L2TXTFILES) $(HELPMSG) $(L1TXTFILES)
 SYSGOTEXTFILES = $(L2SYSGOTEXTFILES)
-ALLOBJS = $(TEXTFILES) $(SYSGOTEXTFILES) $(BINFILES) motd inetd.conf
+ALLOBJS = $(TEXTFILES) $(SYSGOTEXTFILES) $(BINFILES) 
 
 all:	$(ALLOBJS) $(DEPENDS)
 
@@ -61,7 +61,7 @@ showbinobjs:
 	@$(ECHO) $(BINFILES)
 
 showtextobjs:
-	@$(ECHO) $(TEXTFILES) motd inetd.conf
+	@$(ECHO) $(TEXTFILES) motd inetd.conf env.file sysgo.cfg
 
 showsysgotextobjs:
 	@$(ECHO) $(SYSGOTEXTFILES)

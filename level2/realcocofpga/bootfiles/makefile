@@ -31,6 +31,7 @@ BOOTFILE_REALCOCOFPGA	= $(MD)/krnp2 $(MD)/ioman $(MD)/init \
         $(REALCOCOFPGA_SDC_DRIVERS) \
 		$(MD)/scf.mn \
 		$(VTIO_COWIN_80) \
+		$(MD)/myram.dr $(MD)/mr0.dd \
 		$(PIPE) \
 		$(CLOCK60HZ)
 
